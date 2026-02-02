@@ -1,0 +1,30 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/ai_activity_fitness
+      database: ai_activity_fitness
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
+    initial-instance-info-replication-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+
+server:
+  port: 8082
+
+kafka:
+  topic:
+    name: activity-events

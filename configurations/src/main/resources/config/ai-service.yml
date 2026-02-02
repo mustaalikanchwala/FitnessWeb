@@ -1,0 +1,39 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/airecommendationfitness
+      database: airecommendationfitness
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: activity-processor-group
+      key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: com.fitness.aiService.model.Activity
+        spring.json.trusted.packages: "*"
+
+kafka:
+  topic:
+    name: activity-events
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
+    initial-instance-info-replication-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+
+gemini:
+  api:
+    key: ${GEMINI_KEY}
+    url: ${GEMINI_URL}
+
+server:
+  port: 8083
