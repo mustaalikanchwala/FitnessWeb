@@ -29,7 +29,7 @@ public class RecommendationService {
         return RecommendationResponse
                 .recomToresponse(recommendationRepository
                         .findByActivityId(activityId)
-                        .orElseThrow(() -> new RecommendationNotFoundException("Recommendation Not found")));
+                        .orElseThrow(() -> new RecommendationNotFoundException("Recommendation Not found " +activityId)));
     }
 
 

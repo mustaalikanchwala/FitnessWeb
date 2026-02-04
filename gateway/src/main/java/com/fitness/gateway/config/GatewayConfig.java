@@ -17,6 +17,9 @@ public class GatewayConfig {
                 .route("activity-service", r -> r
                         .path("/api/activities/**")
                         .uri("lb://ACTIVITY-SERVICE"))
+                .route("ai-service", r -> r
+                        .path("/api/recommendation/**")
+                        .uri("lb://AI-SERVICE"))
                 .build();
     }
 }
